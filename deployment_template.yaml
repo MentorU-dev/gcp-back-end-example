@@ -55,6 +55,8 @@ spec:
                 secretKeyRef:
                   key: latest
                   name: AUTH_PLATFORM_DOMAIN
+            - name: DATASET
+              value: {CICD_PROJECT_ID}     
           resources:
             limits:
               cpu: 1000m
