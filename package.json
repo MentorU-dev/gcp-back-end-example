@@ -1,0 +1,52 @@
+{
+  "name": "ms-boilerplate",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "^20.9.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "DEV_ENV=true nodemon --watch 'src/**/*' index.js",
+    "build": "rm -rf .dist && babel src --out-dir .dist --copy-files --extensions '.ts,.js' && copyfiles openapi.yaml .dist/ && copyfiles index.js .dist/"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "@google-cloud/bigquery": "^7.4.0",
+    "@google-cloud/firestore": "^7.3.0",
+    "@types/lodash": "^4.14.165",
+    "axios": "^1.6.5",
+    "cookie-parser": "~1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.18.2",
+    "firebase": "^10.7.1",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.11.3",
+    "reflect-metadata": "^0.2.1",
+    "swagger-ui-express": "^4.1.4",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-decorators": "^7.23.7",
+    "@babel/plugin-syntax-decorators": "^7.23.3",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-typescript": "^7.10.4",
+    "@babel/register": "^7.11.5",
+    "@faker-js/faker": "^8.3.1",
+    "@types/express": "^4.17.8",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^20.10.7",
+    "@types/supertest": "^6.0.2",
+    "@types/yamljs": "^0.2.31",
+    "copyfiles": "^2.3.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^4.0.2",
+    "ts-jest": "^29.1.2",
+    "tslib": "^2.0.1",
+    "typescript": "^4.0.2"
+  }
+}

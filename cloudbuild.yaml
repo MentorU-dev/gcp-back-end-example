@@ -1,0 +1,29 @@
+# Axmos Technologies 
+# Axmos Back End Example is an Open Source Project
+# This file is just an example and is distributed without any warranty
+# Made with love
+
+steps:
+#Build and push docker image
+- name: 'gcr.io/cloud-builders/docker'
+  script: |
+    #!/usr/bin/env bash
+    export $(grep -v '^#' $BRANCH_NAME.env_deploy | xargs)
+    export VERSION=$(date '+%Y%m%d%H%M%S')
+    export IMAGE="$REGION-docker.pkg.dev/$CICD_PROJECT_ID/$ARTIFACT_REPOSITORY/$SERVICE_NAME:$VERSION"
+    echo $VERSION > /workspace/VERSION.txt
+    docker build -t $IMAGE .
+    docker push $IMAGE
+  env:
+  - 'BRANCH_NAME=$BRANCH_NAME'
+  - 'PROJECT_ID=$PROJECT_ID'
+#Execute deploy.sh with image tag provided by docker build step
+- name: 'gcr.io/cloud-builders/gcloud'
+  script: |
+    #!/usr/bin/env bash
+    export VERSION=$(cat /workspace/VERSION.txt)
+    echo $VERSION
+    sh deploy.sh $VERSION
+  env:
+  - 'BRANCH_NAME=$BRANCH_NAME'
+  - 'PROJECT_ID=$PROJECT_ID'
