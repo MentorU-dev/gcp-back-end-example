@@ -45,6 +45,16 @@ spec:
                 secretKeyRef:
                   key: VERSION
                   name: DB_NAME
+            - name: AUTH_PLATFORM_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: VERSION
+                  name: AUTH_PLATFORM_KEY
+            - name: AUTH_PLATFORM_DOMAIN
+              valueFrom:
+                secretKeyRef:
+                  key: VERSION
+                  name: AUTH_PLATFORM_DOMAIN
           resources:
             limits:
               cpu: 1000m
