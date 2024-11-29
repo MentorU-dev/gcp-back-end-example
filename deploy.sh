@@ -17,4 +17,4 @@ cat deployment.yaml
 
 gcloud beta run services replace deployment.yaml --platform managed --region $REGION 
 
-gcloud run services update $SERVICE_NAME --vpc-connector $VPC_CONNECTOR --region $REGION
+#gcloud run services update $SERVICE_NAME --vpc-connector $VPC_CONNECTOR --region $REGION
