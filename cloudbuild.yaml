@@ -27,3 +27,5 @@ steps:
   env:
   - 'BRANCH_NAME=$BRANCH_NAME'
   - 'PROJECT_ID=$PROJECT_ID'
+options:
+  logging: CLOUD_LOGGING_ONLY
