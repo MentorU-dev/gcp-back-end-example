@@ -47,6 +47,8 @@ This repository is part of a set of open source projects created by Axmos to pro
     AUTH_PLATFORM_DOMAIN=
     PROJECT_ID=
     DATASET=
+    DIFYAI_BASE_URL=
+    DIFYAI_API_KEY=
     ```
 
     *   `PORT`: The port the server will listen on (default: 8080).

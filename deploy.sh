@@ -15,6 +15,7 @@ sed -e "s/{ARTIFACT_REPOSITORY}/$ARTIFACT_REPOSITORY/g" \
     -e "s/{REGION}/$REGION/g" \
     -e "s/{CICD_PROJECT_ID}/$CICD_PROJECT_ID/g" \
     -e "s/{VERSION}/$VERSION/g" \
+    -e "s/{DIFYAI_API_KEY}/$DIFYAI_API_KEY/g" \
     deployment_template.yaml > deployment.yaml
 
 # Mostrar el contenido del archivo generado (opcional, para depuración)

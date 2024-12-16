@@ -56,7 +56,9 @@ spec:
                   key: latest
                   name: AUTH_PLATFORM_DOMAIN
             - name: DATASET
-              value: {CICD_PROJECT_ID}     
+              value: {CICD_PROJECT_ID}
+            - name: DIFYAI_API_KEY
+              value: {DIFYAI_API_KEY}
           resources:
             limits:
               cpu: 1000m

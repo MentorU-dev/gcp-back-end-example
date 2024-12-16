@@ -2,7 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import http from 'http';
 import dotEnv from 'dotenv';
-import {  CORS } from './tools/index';
+import { CORS } from './tools/index';
 import { Controllers } from './controllers/index';
 
 dotEnv.config();
@@ -27,10 +27,10 @@ export const service = {
     server.on('error', service.error);
     return app;
   },
-  listen (evt) {
+  listen(evt) {
     return evt;
   },
-  error (evt) {
+  error(evt) {
     return evt;
   }
 }
