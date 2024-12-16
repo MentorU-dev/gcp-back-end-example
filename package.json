@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "DEV_ENV=true nodemon --watch 'src/**/*' index.js",
+    "dev": "DEV_ENV=true nodemon --verbose --watch 'src/**/*' index.js",
     "build": "rm -rf .dist && babel src --out-dir .dist --copy-files --extensions '.ts,.js' && copyfiles index.js .dist/"
   },
   "dependencies": {

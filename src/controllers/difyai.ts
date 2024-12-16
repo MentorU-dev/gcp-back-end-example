@@ -44,27 +44,37 @@ export class DifyAI {
 
       const reader = response.body?.getReader();
       const decoder = new TextDecoder("utf-8");
-      let result = '';
+      let buffer = '';
       let answer = '';
       let conversation_id = '';
+      let isFirstChunk = true;
 
       if (reader) {
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
           const chunk = decoder.decode(value, { stream: true });
-          result += chunk;
+          buffer += chunk;
 
-          // Procesar cada línea que comienza con "data: "
-          const lines = result.split('\n');
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || '';
+
           for (const line of lines) {
             if (line.startsWith('data: ')) {
-              const jsonString = line.replace('data: ', '');
               try {
+                const jsonString = line.replace('data: ', '');
                 const data = JSON.parse(jsonString);
 
                 if (data.event === "agent_message") {
-                  answer += data.answer
+                  if (isFirstChunk) {
+                    const cleanedAnswer = data.answer.replace(/^[—-]\s*/, '');
+                    answer = cleanedAnswer;
+                    isFirstChunk = false;
+                  } else {
+                    answer += data.answer;
+                  }
+                  console.log('Chunk recibido:', chunk);
+                  console.log('Línea a parsear:', jsonString);
                 }
 
                 conversation_id = data.conversation_id;
@@ -73,7 +83,6 @@ export class DifyAI {
               }
             }
           }
-          result = '';
         }
       }
 
